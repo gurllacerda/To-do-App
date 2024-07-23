@@ -6,24 +6,24 @@ function App() {
   const [taskName, setTaskName] = useState("");
   const [tasks, setTasks] = useState([]);
   const [newId, setNewId] = useState(0);
-  const [editableTaskId, setEditableTaskId] = useState(null);
+  const [taskId, setTaskId] = useState(null);
   const [editText, setEditText] = useState("");
-
+  const [isCompleted, setIsCompleted] = useState(false)
   // Controla o submit do form 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (taskName.trim()) {
-      const task = { id: newId, tarefa: taskName };
+      const task = { id: newId, tarefa: taskName, complete: isCompleted };
       setTasks([...tasks, task]);
       setTaskName(""); 
       setNewId(newId + 1); 
     }
   };
 
-  useEffect(() => {
-    console.log(tasks);
-  }, [tasks]);
+  // useEffect(() => {
+  //   console.log(tasks);
+  // }, [tasks]);
 
   const handleDelete = (id) => {
     const newTaskList = tasks.filter((task) => task.id !== id);
@@ -32,7 +32,7 @@ function App() {
 
   const handleEdit = (id) => {
     const taskToEdit = tasks.find((task) => task.id === id);
-    setEditableTaskId(id);
+    setTaskId(id);
     setEditText(taskToEdit.tarefa);
   };
 
@@ -40,14 +40,21 @@ function App() {
     setTasks(tasks.map((task) =>
       task.id === id ? { ...task, tarefa: editText } : task
     ));
-    setEditableTaskId(null);
+    setTaskId(null);
     setEditText("");
   };
 
   const handleCancel = () => {
-    setEditableTaskId(null);
+    setTaskId(null);
     setEditText("");
   };
+
+  const handleChecked = (id) => {
+    setTasks(tasks.map((task) =>
+      task.id === id ? { ...task, complete: !task.complete } : task
+    ));
+  };
+
 
   return (
     <div className="container">
@@ -71,8 +78,10 @@ function App() {
         tasks={tasks}
         onDelete={handleDelete}
         onEdit={handleEdit}
-        editableTaskId={editableTaskId}
+        taskId={taskId}
         editText={editText}
+        // isCompleted={isCompleted}
+        onChecked={handleChecked}
         onSave={handleSave}
         onCancel={handleCancel}
         setEditText={setEditText}

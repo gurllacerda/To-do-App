@@ -1,15 +1,28 @@
 import React from "react";
+import "./TaskList.css"; // Certifique-se de importar o CSS correto
 
 const TaskList = (props) => {
-  const { tasks, onDelete, onEdit, editableTaskId, onSave, onCancel, editText, setEditText } = props;
-//   console.log(isEditable);
+  const {
+    tasks,
+    onDelete,
+    onEdit,
+    taskId,
+    onSave,
+    onCancel,
+    editText,
+    setEditText,
+    onChecked
+  } = props;
 
   return (
     <div className="task-list">
       <ul>
         {tasks.map((task) => (
-          <li key={task.id} className="task-item">
-            {editableTaskId === task.id ? (
+          <li
+            key={task.id}
+            className={`task-item ${task.complete ? 'completed' : ''}`}
+          >
+            {taskId === task.id ? (
               <>
                 <input
                   type="text"
@@ -29,6 +42,14 @@ const TaskList = (props) => {
               </>
             ) : (
               <>
+                <span>
+                  <input
+                    type="checkbox"
+                    value={task.id}
+                    onChange={() => onChecked(task.id)}
+                    checked={task.complete}
+                  />
+                </span>
                 <span>{task.tarefa}</span>
                 <i
                   className="fa-solid fa-trash"

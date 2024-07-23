@@ -1,17 +1,17 @@
 :root {
-  --primary-color: #007bff; /* Azul vibrante */
-  --secondary-color: #28a745; /* Verde suave */
-  --danger-color: #dc3545; /* Vermelho suave */
-  --background-color: #f4f7f6; /* Cinza claro para o fundo da página */
-  --container-bg: #ffffff; /* Branco para o fundo do container */
-  --form-bg: #e9ecef; /* Cinza muito claro para o fundo do formulário */
-  --form-border: #007bff; /* Azul para a borda do formulário */
-  --input-bg: #f1f3f5; /* Cinza claro para o fundo do input */
-  --input-border: #ced4da; /* Cinza claro para a borda do input */
-  --task-bg: #ffffff; /* Branco para as tarefas */
-  --task-border: #ced4da; /* Cinza claro para a borda das tarefas */
-  --task-hover: #f8f9fa; /* Cinza claro para o hover das tarefas */
-  --text-color: #333; /* Texto escuro */
+  --primary-color: #3498db; /* Azul claro */
+  --secondary-color: #2ecc71; /* Verde */
+  --danger-color: #e74c3c; /* Vermelho */
+  --background-color: #0d1117; /* Preto para o fundo da página */
+  --container-bg: #1e2a38; /* Azul escuro para o fundo do container e do formulário */
+  --form-bg: #1e2a38; /* Mesmo fundo para o formulário e container */
+  --form-border: #3498db; /* Azul claro para a borda do formulário */
+  --input-bg: #2c3e50; /* Azul muito escuro para o fundo do input */
+  --input-border: #34495e; /* Azul escuro para a borda do input */
+  --task-bg: #1e2a38; /* Azul escuro para as tarefas */
+  --task-border: #0d1117; /* Preto para a borda das tarefas */
+  --task-hover: #25303f; /* Azul um pouco mais claro para o hover das tarefas */
+  --text-color: #f5f5f5; /* Texto claro */
 }
 
 /* Corpo da página */
@@ -23,23 +23,23 @@ body {
   padding: 0;
   box-sizing: border-box;
   display: flex;
-  align-items: center; /* Centraliza verticalmente o conteúdo */
-  justify-content: center; /* Centraliza horizontalmente o conteúdo */
-  height: 100vh; /* Ocupa a altura total da janela */
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 /* Container principal */
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente o container */
-  justify-content: center; /* Centraliza verticalmente o container */
+  align-items: center;
+  justify-content: center;
   max-width: 600px;
-  width: 100%; /* Ocupa a largura total disponível */
+  width: 100%;
   padding: 20px;
-  background-color: var(--container-bg); /* Fundo branco para o container */
+  background-color: var(--container-bg); /* Fundo cinza escuro para o container */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilo para o título */
@@ -57,15 +57,15 @@ body {
 /* Estilo do formulário */
 .taskForm {
   display: flex;
-  flex-direction: column; /* Coloca o input e o botão um embaixo do outro */
-  align-items: center; /* Centraliza os itens horizontalmente */
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
-  background-color: var(--form-bg); /* Fundo cinza claro para o formulário */
-  border: 2px solid var(--form-border); /* Borda azul */
+  background-color: var(--form-bg); /* Fundo azul escuro para o formulário */
   border-radius: 8px;
   padding: 20px;
-  width: 100%; /* Ocupa a largura disponível do container */
-  max-width: 500px; /* Limita a largura do formulário */
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid var(--form-border); /* Borda azul claro */
 }
 
 /* Estilo para o input */
@@ -76,7 +76,7 @@ body {
   background-color: var(--input-bg);
   font-size: 16px;
   color: var(--text-color);
-  width: 100%; /* Ocupa a largura disponível do formulário */
+  width: 100%;
 }
 
 .task:focus {
@@ -87,77 +87,17 @@ body {
 /* Estilo para o botão */
 button {
   background-color: var(--primary-color);
-  color: #fff;
+  color: var(--text-color);
   border: none;
   padding: 10px 15px;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-  width: 100%; /* Ocupa a largura disponível do formulário */
-}
-
-button:hover {
-  background-color: #0056b3; /* Azul escuro para hover */
-  transform: scale(1.05);
-}
-
-/* Estilo da lista de tarefas */
-.task-list {
-  margin-top: 20px;
-}
-
-.task-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: var(--task-bg);
-  border: 1px solid var(--task-border);
-  border-radius: 4px;
-  position: relative;
-  transition: background-color 0.3s;
-}
-
-.task-item:hover {
-  background-color: var(--task-hover);
-}
-
-.task-item span {
-  flex: 1;
-  overflow: hidden;
-  font-size: 16px;
-}
-
-.task-item input {
-  border: none;
-  background: transparent;
-  color: var(--text-color);
-  font-size: 16px;
   width: 100%;
 }
 
-.task-item i {
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.task-item i.fa-trash {
-  color: var(--danger-color);
-}
-
-.task-item i.fa-pen-to-square {
-  color: var(--primary-color);
-  margin-left: 10px;
-}
-
-.task-item i.fa-check {
-  color: var(--primary-color);
-  margin-left: 10px;
-}
-
-.task-item i.fa-times {
-  color: var(--danger-color);
-  margin-left: 10px;
+button:hover {
+  background-color: #2980b9; /* Azul um pouco mais escuro para hover */
+  transform: scale(1.05);
 }

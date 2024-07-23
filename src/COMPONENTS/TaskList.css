@@ -1,0 +1,65 @@
+.task-list {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .task-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #1e2a38; /* Azul escuro */
+    border: 1px solid #0d1117; /* Preto para a borda */
+    border-radius: 8px;
+    position: relative;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+    color: #f5f5f5; /* Texto claro */
+  }
+  
+  .task-item:hover {
+    background-color: #25303f; /* Azul um pouco mais claro */
+    border-color: #1b1d22; /* Preto um pouco mais claro */
+  }
+  
+  /* Estilo para tarefas concluídas */
+  .task-item.completed {
+    text-decoration: line-through;
+    color: #7f8c8d; /* Cinza escuro para o texto de tarefas concluídas */
+  }
+  
+  /* Remove a borda dos checkboxes */
+  .task-item input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: #3498db; /* Azul claro para o checkbox */
+  }
+  
+  .task-item i {
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .task-item i.fa-trash {
+    color: #e74c3c; /* Vermelho para deletar */
+  }
+  
+  .task-item i.fa-pen-to-square {
+    color: #3498db; /* Azul claro para editar */
+  }
+  
+  .task-item i.fa-check {
+    color: #2ecc71; /* Verde para salvar */
+  }
+  
+  .task-item i.fa-times {
+    color: #e74c3c; /* Vermelho para cancelar */
+  }
