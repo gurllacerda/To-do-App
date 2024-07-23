@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import TaskList from "./COMPONENTS/TaskList";
 import "./App.css";
 
@@ -9,6 +9,7 @@ function App() {
   const [taskId, setTaskId] = useState(null);
   const [editText, setEditText] = useState("");
   const [isCompleted, setIsCompleted] = useState(false)
+
   // Controla o submit do form 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -50,6 +51,7 @@ function App() {
   };
 
   const handleChecked = (id) => {
+    setIsCompleted(!isCompleted)
     setTasks(tasks.map((task) =>
       task.id === id ? { ...task, complete: !task.complete } : task
     ));
